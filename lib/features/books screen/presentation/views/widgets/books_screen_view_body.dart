@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibook/core/constants/constants.dart';
-import 'package:ibook/features/books%20screen/presentation/views/widgets/best_seller_list.dart';
+import 'package:ibook/features/books%20screen/presentation/views/widgets/latest_books_list.dart';
 import 'package:ibook/features/books%20screen/presentation/views/widgets/first_book_view_list.dart';
 
 import 'best_seller_word_aniation.dart';
@@ -51,18 +51,18 @@ class _BooksScreenViewBodyState extends State<BooksScreenViewBody>
               child: CustomBooksViewAppBar(),
             ),
             SliverToBoxAdapter(
-              child: LatestBooksListView(),
+              child: FeaturedBooksListView(),
             ),
             SliverPadding(padding: EdgeInsets.all(10)),
             BestSellerWordAnimation(
                 animationController: animationController, animation: animation),
             SliverPadding(padding: EdgeInsets.all(1)),
-            BestSellerList(
+            LatestBooksList(
               animation: opacityAnimation,
               animationController: animationController,
             ),
             SliverToBoxAdapter(
-              child: LatestBooksListView(),
+              child: FeaturedBooksListView(),
             ),
           ],
         ),

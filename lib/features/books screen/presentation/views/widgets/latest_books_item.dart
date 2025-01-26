@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ibook/core/constants/constants.dart';
 import 'package:ibook/core/constants/styles.dart';
+import 'package:ibook/features/books%20screen/data/model/book_model/book_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({
+    super.key,
+    required this.bookitem,
+  });
+  final BookModel bookitem;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(kBookDtailsScreen);
+        context.go(kBookDtailsScreen, extra: bookitem);
       },
       child: Row(
         children: [
@@ -18,7 +23,13 @@ class BestSellerItem extends StatelessWidget {
               flex: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: SizedBox(child: Image.asset(kAppLogo)),
+                child: SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: CachedNetworkImage(
+                      imageUrl: bookitem.volumeInfo!.imageLinks!.thumbnail!,
+                      fit: BoxFit.cover,
+                    )),
               )),
           Expanded(
               flex: 3,
@@ -29,18 +40,18 @@ class BestSellerItem extends StatelessWidget {
                   children: [
                     Text(
                       overflow: TextOverflow.clip,
-                      "Title Title Title Title Title Title Title Title",
+                      bookitem.volumeInfo!.title!,
                       style: Styles.kStyle1,
                     ),
                     Text(
-                      "Auther Auther Auther ",
+                      bookitem.volumeInfo!.authors![0],
                       style: Styles.kStyle2,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "Rating",
+                          "Free",
                           style: Styles.kStyle3,
                         ),
                         Spacer(),

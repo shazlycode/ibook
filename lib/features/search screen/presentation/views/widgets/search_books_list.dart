@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ibook/features/books%20screen/presentation/views/widgets/best_seller_list.dart';
+import 'package:ibook/features/books%20screen/presentation/views/widgets/latest_books_list.dart';
 
 class SearchScreenList extends StatelessWidget {
   const SearchScreenList(
@@ -8,7 +8,7 @@ class SearchScreenList extends StatelessWidget {
   final Animation<double> animation;
   @override
   Widget build(BuildContext context) {
-    return BestSellerList(
+    return LatestBooksList(
         animationController: animationController, animation: animation);
   }
 }

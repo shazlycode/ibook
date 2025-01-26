@@ -21,7 +21,7 @@ class BestSellerWordAnimation extends StatelessWidget {
             return SlideTransition(
               position: animation,
               child: Text(
-                "Best Seller",
+                "Recently Added Books",
                 style: Styles.kStyle1,
               ),
             );

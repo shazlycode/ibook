@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ibook/core/constants/constants.dart';
 import 'package:ibook/core/constants/styles.dart';
+import 'package:ibook/features/books%20screen/data/model/book_model/book_model.dart';
 
 class BookSection extends StatelessWidget {
-  const BookSection({super.key});
-
+  const BookSection({super.key, required this.bookItem});
+  final BookModel bookItem;
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -12,8 +14,8 @@ class BookSection extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Image.asset(
-              kAppLogo,
+            child: CachedNetworkImage(
+              imageUrl: bookItem.volumeInfo!.imageLinks!.thumbnail!,
               fit: BoxFit.cover,
               height: 300,
               width: 250,
@@ -21,12 +23,12 @@ class BookSection extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            "Book Title",
+            bookItem.volumeInfo!.title!,
             style: Styles.kStyle1,
           ),
           SizedBox(height: 5),
           Text(
-            "Book Auther",
+            bookItem.volumeInfo!.authors![0],
             style: Styles.kStyle3,
           ),
           SizedBox(height: 5),
@@ -35,7 +37,7 @@ class BookSection extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 overflow: TextOverflow.fade,
-                "This empowering guide takes you on a transformative journey to uncover your true potential. Blending practical strategies with inspiring insights, it helps you overcome obstacles, build resilience, and achieve personal and professional success. Whether you're seeking clarity, confidence, or motivation, this book offers the tools you need to create a life of purpose and fulfillment. Perfect for readers ready to embrace change and unlock their best selves.",
+                bookItem.volumeInfo!.description!,
                 style: Styles.kStyle2,
               ),
             ),
