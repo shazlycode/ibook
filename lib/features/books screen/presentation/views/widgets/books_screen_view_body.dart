@@ -4,6 +4,7 @@ import 'package:ibook/core/constants/styles.dart';
 import 'package:ibook/features/books%20screen/presentation/views/widgets/best_seller_list.dart';
 import 'package:ibook/features/books%20screen/presentation/views/widgets/first_book_view_list.dart';
 
+import 'best_seller_word_aniation.dart';
 import 'custom_books_view_appbar.dart';
 
 class BooksScreenViewBody extends StatefulWidget {
@@ -34,39 +35,32 @@ class _BooksScreenViewBodyState extends State<BooksScreenViewBody>
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        shrinkWrap: true,
-        slivers: [
-          SliverToBoxAdapter(
-            child: CustomBooksViewAppBar(),
-          ),
-          SliverToBoxAdapter(
-            child: LatestBooksListView(),
-          ),
-          SliverPadding(padding: EdgeInsets.all(10)),
-          SliverToBoxAdapter(
-            child: AnimatedBuilder(
-                animation: animationController,
-                builder: (context, _) {
-                  return SlideTransition(
-                    position: animation,
-                    child: Text(
-                      "Best Seller",
-                      style: Styles.kStyle1,
-                    ),
-                  );
-                }),
-          ),
-          SliverPadding(padding: EdgeInsets.all(1)),
-          BestSellerList(
-            animation: opacityAnimation,
-            animationController: animationController,
-          ),
-          SliverToBoxAdapter(
-            child: LatestBooksListView(),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          primary: true,
+          slivers: [
+            SliverToBoxAdapter(
+              child: CustomBooksViewAppBar(),
+            ),
+            SliverToBoxAdapter(
+              child: LatestBooksListView(),
+            ),
+            SliverPadding(padding: EdgeInsets.all(10)),
+            BestSellerWordAnimation(
+                animationController: animationController, animation: animation),
+            SliverPadding(padding: EdgeInsets.all(1)),
+            BestSellerList(
+              animation: opacityAnimation,
+              animationController: animationController,
+            ),
+            SliverToBoxAdapter(
+              child: LatestBooksListView(),
+            ),
+          ],
+        ),
       ),
     );
   }

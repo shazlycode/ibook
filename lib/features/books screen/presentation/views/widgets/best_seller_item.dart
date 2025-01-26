@@ -12,9 +12,8 @@ class BestSellerItem extends StatelessWidget {
         Expanded(
             flex: 1,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: SizedBox(
-                  height: 150, width: 100, child: Image.asset(kAppLogo)),
+              borderRadius: BorderRadius.circular(10),
+              child: SizedBox(child: Image.asset(kAppLogo)),
             )),
         Expanded(
             flex: 3,
