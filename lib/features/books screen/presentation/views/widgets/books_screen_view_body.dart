@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ibook/core/constants/constants.dart';
-import 'package:ibook/core/constants/styles.dart';
 import 'package:ibook/features/books%20screen/presentation/views/widgets/best_seller_list.dart';
 import 'package:ibook/features/books%20screen/presentation/views/widgets/first_book_view_list.dart';
 
@@ -22,14 +21,20 @@ class _BooksScreenViewBodyState extends State<BooksScreenViewBody>
 
   @override
   void initState() {
+    bookViewanimation();
+    super.initState();
+  }
+
+  void bookViewanimation() {
     animationController = AnimationController(
         vsync: this, duration: splashScreenAnimationDuration);
+
     animation = Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0)).animate(
         CurvedAnimation(parent: animationController, curve: Curves.decelerate));
+
     animationController.forward();
     opacityAnimation =
         Tween<double>(begin: 0.2, end: 1).animate(animationController);
-    super.initState();
   }
 
   @override

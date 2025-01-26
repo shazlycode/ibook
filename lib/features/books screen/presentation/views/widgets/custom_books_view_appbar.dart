@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ibook/core/constants/constants.dart';
 import 'package:ibook/core/constants/styles.dart';
 
 class CustomBooksViewAppBar extends StatelessWidget {
@@ -16,7 +18,9 @@ class CustomBooksViewAppBar extends StatelessWidget {
           ),
           Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(kSearchScreenPath);
+            },
             icon: Icon(
               Icons.search,
               size: 24,
