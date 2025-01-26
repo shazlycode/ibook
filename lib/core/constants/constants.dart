@@ -4,3 +4,4 @@ const kSearchScreenPath = "/searchScreenView";
 const kBookScreenView = "/bookScreenView";
 const kBookDtailsScreen = "/bookDetailsScreen";
 const kSplashScreen = "/";
+const baseUrl = "https://www.googleapis.com/books/v1/";
