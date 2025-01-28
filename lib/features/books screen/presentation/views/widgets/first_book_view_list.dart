@@ -25,10 +25,14 @@ class FeaturedBooksListView extends StatelessWidget {
                 }),
           );
         } else if (state is FeaturedBooksCubitFailure) {
-          return Center(child: Text(state.errorMessage!));
+          return Center(
+              child: Text(
+            state.errorMessage!,
+          ));
         } else {
           return Center(
-            child: CircularProgressIndicator(),
+            child: SizedBox(
+                height: 25, width: 25, child: CircularProgressIndicator()),
           );
         }
       },

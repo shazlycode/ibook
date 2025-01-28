@@ -17,7 +17,7 @@ class _SpalshScreenAnimationState extends State<SpalshScreenAnimation>
 
   void navigateToHome(BuildContext context) async {
     Future<void>.delayed(Duration(seconds: 3), () {
-      GoRouter.of(context).push('/booksScreenView');
+      context.go(kBookScreenView);
     });
   }
 

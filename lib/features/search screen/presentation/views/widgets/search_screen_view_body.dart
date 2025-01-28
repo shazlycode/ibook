@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ibook/features/search%20screen/presentation/view%20model/search_cubit/search_cubit.dart';
 import 'package:ibook/features/search%20screen/presentation/views/widgets/custom_search_screen_search_text_field.dart';
-import 'package:ibook/features/search%20screen/presentation/views/widgets/search_books_list.dart';
 
 import '../../../../../core/constants/constants.dart';
 import 'custom_search_screen_view_app_bar.dart';
+import 'search_screen_list.dart';
 
 class SearchScreenViewBody extends StatefulWidget {
   const SearchScreenViewBody({super.key});
@@ -36,13 +38,15 @@ class _SearchScreenViewBodyState extends State<SearchScreenViewBody>
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: CustomScrollView(
-          slivers: [
-            CustomSearchScreenAppBar(),
-            CustomSearchScreenSearchTextField(),
-            SearchScreenList(
-                animationController: animationController, animation: animation)
-          ],
+        child: BlocProvider(
+          create: (context) => SearchCubit(),
+          child: CustomScrollView(
+            slivers: [
+              CustomSearchScreenAppBar(),
+              CustomSearchScreenSearchTextField(),
+              SearchScreenList(),
+            ],
+          ),
         ),
       ),
     );

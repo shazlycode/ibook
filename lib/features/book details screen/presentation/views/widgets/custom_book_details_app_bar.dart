@@ -12,7 +12,7 @@ class CustomBookDetialsAppBar extends StatelessWidget {
         children: [
           IconButton(
               onPressed: () {
-                context.go(kSplashScreen);
+                context.go(kBookScreenView);
               },
               icon: Icon(Icons.arrow_back))
         ],

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibook/features/books%20screen/presentation/view_model/latest_book_cubit/latest_books_cubit.dart';
-import 'package:ibook/features/books%20screen/presentation/views/widgets/book_item.dart';
-
 import 'latest_books_item.dart';
 
 class LatestBooksList extends StatelessWidget {
   const LatestBooksList(
-      {super.key, required this.animationController, required this.animation});
+      {super.key,
+      required this.animationController,
+      required this.animation,
+      this.searchText});
   final AnimationController animationController;
   final Animation<double> animation;
+  final String? searchText;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LatestBooksCubit, LatestBooksState>(
@@ -35,8 +37,10 @@ class LatestBooksList extends StatelessWidget {
           );
         } else {
           return SliverToBoxAdapter(
-            child: CircularProgressIndicator(),
-          );
+              child: Center(
+            child: SizedBox(
+                height: 25, width: 25, child: CircularProgressIndicator()),
+          ));
         }
       },
     );
